@@ -1,0 +1,12 @@
+server:
+  port: 10000 #注册中心
+
+spring:
+  application:
+    name:
+  datasource:
+    url: jdbc:mysql://localhost:3306/atcrowdfunding
+    username: root
+    password: root
+mybatis:
+  type-aliases-package: com.leyou.item.pojo

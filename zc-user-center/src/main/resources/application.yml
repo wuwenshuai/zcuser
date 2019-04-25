@@ -1,0 +1,22 @@
+server:
+  port: 10000 #注册中心
+spring:
+  mvc:
+    static-path-pattern: /static/**
+  application:
+    name:
+  datasource:
+    url: jdbc:mysql://localhost:3306/atcrowdfunding
+    username: root
+    password: root
+  thymeleaf:
+
+    cache: false
+    mode: HTML5
+    encoding: utf-8
+
+    servlet:
+      content-type: text/html
+    prefix: classpath:/static/
+mybatis:
+  type-aliases-package: com.carry.pojo
