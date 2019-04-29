@@ -9,6 +9,9 @@
 	<link rel="stylesheet" href="/static/bootstrap/css/bootstrap.min.css">
 	<link rel="stylesheet" href="/static/css/font-awesome.min.css">
 	<link rel="stylesheet" href="/static/css/theme.css">
+      <script src="/static/jquery/jquery-2.1.1.min.js"></script>
+      <script src="/static/bootstrap/js/bootstrap.js"></script>
+      <script src="/static/jquery/layer/layer.js"></script>
 	<style>
 #footer {
     padding: 15px 0;
@@ -82,9 +85,9 @@
             <div id="navbar" class="navbar-collapse collapse" style="float:right;">
               <ul class="nav navbar-nav">
                 <li class="dropdown">
-                  <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="glyphicon glyphicon-user"></i> 张三<span class="caret"></span></a>
+                  <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="glyphicon glyphicon-user"></i> Carry<span class="caret"></span></a>
                   <ul class="dropdown-menu" role="menu">
-                    <li><a href="member.html"><i class="glyphicon glyphicon-scale"></i> 会员中心</a></li>
+                    <li><a href="/member"><i class="glyphicon glyphicon-scale"></i> 会员中心</a></li>
                     <li><a href="#"><i class="glyphicon glyphicon-comment"></i> 消息</a></li>
                     <li class="divider"></li>
                     <li><a href="index.html"><i class="glyphicon glyphicon-off"></i> 退出系统</a></li>
@@ -182,19 +185,19 @@
                                 <div class="col-md-12 column" style="padding:0 120px;">
                                     <div class="radio">
                                       <label>
-                                        <input type="radio" name="optionsRadios" id="optionsRadios1" value="option1" checked>
-                                        xxxxx 188****3342 xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
+                                        <input type="radio" name="optionsRadios" id="1" value="option1" checked>
+                                        xxxxx 132****95974 xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
                                       </label>
                                     </div>
                                     <div class="radio">
                                       <label>
-                                        <input type="radio" name="optionsRadios" id="optionsRadios2" value="option2">
-                                        xxxxx 188****3342 xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
+                                        <input type="radio" name="optionsRadios" id="12" value="option2">
+                                        xxxxx 132****95973 xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
                                       </label>
                                     </div>
                                     <div class="radio">
                                       <label>
-                                        <input type="radio" name="optionsRadios" id="optionsRadios2" value="option2">
+                                        <input type="radio" name="optionsRadios" id="123" value="option2">
                                         新地址
                                       </label>
                                     </div>
@@ -210,26 +213,37 @@
                                                   <div class="form-group">
                                                     <label class="col-sm-2 control-label">收货人（*）</label>
                                                     <div class="col-sm-10">
-                                                      <input type="text" class="form-control" style="width:200px;" placeholder="姓名：xxxx" >
+                                                      <input type="text" class="form-control"  id="name" style="width:200px;" placeholder="姓名：xxxx" >
                                                     </div>
                                                   </div>
                                                   <div class="form-group">
-                                                    <label class="col-sm-2 control-label">手机（*）</label>
+                                                    <label class="col-sm-2 control-label" >手机（*）</label>
                                                     <div class="col-sm-10">
-                                                      <input class="form-control" type="text" style="width:200px;" placeholder="请填写11位手机号码"></input>
+                                                      <input class="form-control" type="text" style="width:200px;" placeholder="请填写11位手机号码" id="phone"></input>
                                                     </div>
                                                   </div>
                                                   <div class="form-group">
-                                                    <label class="col-sm-2 control-label">地址（*）</label>
+                                                    <label class="col-sm-2 control-label" >地址（*）</label>
                                                     <div class="col-sm-10">
-                                                      <input class="form-control" type="text" style="width:400px;" placeholder="请填写11位手机号码"></input>
+                                                      <input class="form-control" type="text" style="width:400px;" placeholder="请填写11位手机号码" id="addr"></input>
                                                     </div>
                                                   </div>
                                                   <div class="form-group">
-                                                    <label for="inputEmail3" class="col-sm-2 control-label"></label>
+                                                    <label class="col-sm-2 control-label"></label>
                                                     <div class="col-sm-10">
-                                                          <button type="button" class="btn btn-primary">确认配送信息</button>
+                                                          <button type="button" class="btn btn-primary" id="submitSendMessage">确认配送信息</button>
                                                     </div>
+                                                      <script>
+                                                          $("#submitSendMessage").click(function () {
+                                                              //校验个人信息是否填写完成
+                                                             /* if ($("#name").val().length<=0 || $("#phone").val().length<=0 || $("#addr").val().length<=0){
+                                                                  alert("请完善个人信息");
+                                                              }*/
+                                                              //让付款按钮可以用
+                                                              $("#order").attr('disabled',false);
+
+                                                          });
+                                                      </script>
                                                   </div>
                                                 </form>
                                             </div>
@@ -345,8 +359,35 @@
                                                 请在下单后15分钟内付款，否则您的订单会被自动关闭。
                                                 </li>
                                                 <li style="margin-top:10px;">
-                                                <button disabled="disabled" type="button" class="btn btn-warning btn-lg" onclick="window.location.href='pay-step-3.html'"><i class="glyphicon glyphicon-credit-card"></i> 立即付款</button>
+                                                <button disabled="disabled"  id = "order" type="button" class="btn btn-warning btn-lg"><i class="glyphicon glyphicon-credit-card"></i> 立即付款</button>
                                                 </li>
+                                                <script>
+                                                    $("#order").click(function () {
+
+
+
+
+                                                        var loadingIndex = layer.msg('正在付款中...', {icon: 16});
+                                                       var timeOut =  setTimeout(function(){
+                                                            layer.close(loadingIndex);
+                                                            window.location.href="http://localhost:10000";
+                                                        },1500);
+
+
+                                                        //加载层-风格4
+                                                       /* var timeOut = setTimeout (function(){
+                                                            console.log("000000000000");
+                                                            layer.msg('正在付款中', {
+                                                                icon: 16
+                                                                ,shade: 0.01
+                                                            });
+                                                        },3000);*/
+
+                                                       //
+                                                      //
+
+                                                    });
+                                                </script>
                                                 <li style="margin-top:10px;">
                                                   <div class="checkbox">
                                                     <label>

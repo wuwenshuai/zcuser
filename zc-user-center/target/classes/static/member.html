@@ -1,14 +1,18 @@
 <!DOCTYPE html>
-<html lang="zh-CN">
+<html lang="utf-8">
   <head>
-    <meta charset="GB18030">
+    <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="description" content="">
     <meta name="author" content="">
-	<link rel="stylesheet" href="bootstrap/css/bootstrap.min.css">
-	<link rel="stylesheet" href="css/font-awesome.min.css">
-	<link rel="stylesheet" href="css/theme.css">
+
+      <link rel="stylesheet" href="/static/bootstrap/css/bootstrap.min.css">
+      <link rel="stylesheet" href="/static/css/font-awesome.min.css">
+      <link rel="stylesheet" href="/static/css/theme.css">
+      <script src="/static/jquery/jquery-2.1.1.min.js"></script>
+      <script src="/static/bootstrap/js/bootstrap.js"></script>
+      <script src="/static/jquery/layer/layer.js"></script>
 	<style>
 #footer {
     padding: 15px 0;
@@ -55,17 +59,17 @@
 			<nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
 			  <div class="container">
 				<div class="navbar-header">
-				  <a class="navbar-brand" href="index.html" style="font-size:32px;">ÉĞ³ïÍø-´´Òâ²úÆ·ÖÚ³ïÆ½Ì¨</a>
+				  <a class="navbar-brand" href="index.html" style="font-size:32px;">å°šç­¹ç½‘-åˆ›æ„äº§å“ä¼—ç­¹å¹³å°</a>
 				</div>
             <div id="navbar" class="navbar-collapse collapse" style="float:right;">
               <ul class="nav navbar-nav">
                 <li class="dropdown">
-                  <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="glyphicon glyphicon-user"></i> ÕÅÈı<span class="caret"></span></a>
+                  <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="glyphicon glyphicon-user"></i> Carry<span class="caret"></span></a>
                   <ul class="dropdown-menu" role="menu">
-                    <li><a href="member.html"><i class="glyphicon glyphicon-scale"></i> »áÔ±ÖĞĞÄ</a></li>
-                    <li><a href="#"><i class="glyphicon glyphicon-comment"></i> ÏûÏ¢</a></li>
+                    <li><a href="member.html"><i class="glyphicon glyphicon-scale"></i> ä¼šå‘˜ä¸­å¿ƒ</a></li>
+                    <li><a href="#"><i class="glyphicon glyphicon-comment"></i> æ¶ˆæ¯</a></li>
                     <li class="divider"></li>
-                    <li><a href="index.html"><i class="glyphicon glyphicon-off"></i> ÍË³öÏµÍ³</a></li>
+                    <li><a href="index.html"><i class="glyphicon glyphicon-off"></i> é€€å‡ºç³»ç»Ÿ</a></li>
                   </ul>
                 </li>
               </ul>
@@ -81,41 +85,43 @@
 			<div class="row">
 				<div class="col-md-12">
 					<div class="thumbnail" style="    border-radius: 0px;">
-						<img src="img/services-box1.jpg" class="img-thumbnail" alt="">
+						<img src="/static/img/services-box1.jpg" class="img-thumbnail" alt="">
 						<div class="caption" style="text-align:center;">
 							<h3>
-								ZhangSan
+								Carry
 							</h3>
-							<span class="label label-danger" style="cursor:pointer;" onclick="window.location.href='accttype.html'">Î´ÊµÃûÈÏÖ¤</span>
+							<span class="label label-danger" style="cursor:pointer;" onclick="window.location.href='accttype.html'">å·²å®åè®¤è¯</span>
 						</div>
 					</div>
 				</div>
 			</div>
 			<div class="list-group">
 				<div class="list-group-item active">
-					×Ê²ú×ÜÀÀ<span class="badge"><i class="glyphicon glyphicon-chevron-right"></i></span>
+					èµ„äº§æ€»è§ˆ<span class="badge"><i class="glyphicon glyphicon-chevron-right"></i></span>
 				</div>
-				<div class="list-group-item " style="cursor:pointer;" onclick="window.location.href='minecrowdfunding.html'">
-					ÎÒµÄÖÚ³ï<span class="badge"><i class="glyphicon glyphicon-chevron-right"></i></span>
+				<div class="list-group-item " style="cursor:pointer;" onclick="window.location.href='/minecrowdfunding'">
+					æˆ‘çš„ä¼—ç­¹<span class="badge"><i class="glyphicon glyphicon-chevron-right"></i></span>
 				</div>
 			</div>
 		</div>
         <div class="col-sm-9 col-md-9 column">
         <blockquote style="border-left: 5px solid #f60;color:#f60;padding: 0 0 0 20px;">
                                         <b>
-                                            ÎÒµÄÇ®°ü
+                                            æˆ‘çš„é’±åŒ…
                                         </b>
                                     </blockquote>
-            <div id="main" style="width: 600px;height:400px;"></div>
+            <div id="main" style="width: 600px;height:400px;">
+
+            </div>
             <blockquote style="border-left: 5px solid #f60;color:#f60;padding: 0 0 0 20px;">
                                         <b>
-                                            Àí²Æ
+                                            ç†è´¢
                                         </b>
                                     </blockquote>
             <div id="main1" style="width: 600px;height:400px;"></div>
             <blockquote style="border-left: 5px solid #f60;color:#f60;padding: 0 0 0 20px;">
                                         <b>
-                                            ±ÈÀı
+                                            æ¯”ä¾‹
                                         </b>
                                     </blockquote>
             <div id="main2" style="width: 600px;height:400px;"></div>
@@ -127,21 +133,24 @@
                 <div class="col-md-12 column">
                     <div id="footer">
                         <div class="footerNav">
-                             <a rel="nofollow" href="http://www.atguigu.com">¹ØÓÚÎÒÃÇ</a> | <a rel="nofollow" href="http://www.atguigu.com">·şÎñÌõ¿î</a> | <a rel="nofollow" href="http://www.atguigu.com">ÃâÔğÉùÃ÷</a> | <a rel="nofollow" href="http://www.atguigu.com">ÍøÕ¾µØÍ¼</a> | <a rel="nofollow" href="http://www.atguigu.com">ÁªÏµÎÒÃÇ</a>
+                             <a rel="nofollow" href="http://www.atguigu.com">å…³äºæˆ‘ä»¬</a> | <a rel="nofollow" href="http://www.atguigu.com">æœåŠ¡æ¡æ¬¾</a> | <a rel="nofollow" href="http://www.atguigu.com">å…è´£å£°æ˜</a> | <a rel="nofollow" href="http://www.atguigu.com">ç½‘ç«™åœ°å›¾</a> | <a rel="nofollow" href="http://www.atguigu.com">è”ç³»æˆ‘ä»¬</a>
                         </div>
                         <div class="copyRight">
-                            Copyright ?2017-2017atguigu.com °æÈ¨ËùÓĞ
+                            Copyright ?2017-2017atguigu.com ç‰ˆæƒæ‰€æœ‰
                         </div>
                     </div>
                     
                 </div>
             </div>
         </div>
-    <script src="jquery/jquery-2.1.1.min.js"></script>
-    <script src="bootstrap/js/bootstrap.min.js"></script>
-	<script src="script/docs.min.js"></script>
-    <script src="script/back-to-top.js"></script>
-    <script src="script/echarts.js"></script>
+
+
+
+ <script src="/static/jquery/jquery-2.1.1.min.js"></script>
+ <script src="/static/bootstrap/js/bootstrap.min.js"></script>
+ <script src="/static/script/docs.min.js"></script>
+ <script src="/static/script/back-to-top.js"></script>
+ <script src="/static/script/echarts.js"></script>
 	<script>
 $('#myTab a').click(function (e) {
   e.preventDefault()
@@ -154,16 +163,16 @@ $('#myTab1 a').click(function (e) {
 
         var myChart = echarts.init(document.getElementById('main'));
 
-        // Ö¸¶¨Í¼±íµÄÅäÖÃÏîºÍÊı¾İ
+        // æŒ‡å®šå›¾è¡¨çš„é…ç½®é¡¹å’Œæ•°æ®
 option = {
     title: {
-        text: 'ÆßÈÕÄê»¯ÊÕÒæÂÊ(%)'
+        text: 'æ¶ˆè´¹é‡‘é¢'
     },
     tooltip: {
         trigger: 'axis'
     },
     legend: {
-        data:['»ù½ğ','¹ÉÆ±']
+        data:['æ¶ˆè´¹é‡‘é¢']
     },
     toolbox: {
         show: false,
@@ -180,7 +189,8 @@ option = {
     xAxis:  {
         type: 'category',
         boundaryGap: false,
-        data: ['2017-05-16','2017-05-17','2017-05-18','2017-05-19','2017-05-20','2017-05-21','2017-05-22']
+        data: []
+        //data: ['2018-05-16','2018-05-17','2018-05-18','2018-05-19','2018-05-20','2018-05-21','2018-05-22']
     },
     yAxis: {
         type: 'value',
@@ -190,63 +200,59 @@ option = {
     },
     series: [
         {
-            name:'»ù½ğ',
+            name:'æ¶ˆè´¹é‡‘é¢',
             type:'line',
-            data:[1, 1, 5, 3, 2, 3, 2],
+            data:[],
+           // data:[100, 100, 500, 300, 200, 300, 200],
             markPoint: {
                 data: [
-                    {type: 'max', name: '×î´óÖµ'},
-                    {type: 'min', name: '×îĞ¡Öµ'}
+                    {type: 'max', name: 'æœ€å¤§å€¼'},
+                    {type: 'min', name: 'æœ€å°å€¼'}
                 ]
             },
             markLine: {
                 data: [
-                    {type: 'average', name: 'Æ½¾ùÖµ'}
-                ]
-            }
-        },
-        {
-            name:'¹ÉÆ±',
-            type:'line',
-            data:[1, -2, 2, 5, 3, 2, 4],
-            markPoint: {
-                data: [
-                    {name: 'ÖÜ×îµÍ', value: -2, xAxis: 1, yAxis: -1.5}
-                ]
-            },
-            markLine: {
-                data: [
-                    {type: 'average', name: 'Æ½¾ùÖµ'},
-                    [{
-                        symbol: 'none',
-                        x: '90%',
-                        yAxis: 'max'
-                    }, {
-                        symbol: 'circle',
-                        label: {
-                            normal: {
-                                position: 'start',
-                                formatter: '×î´óÖµ'
-                            }
-                        },
-                        type: 'max',
-                        name: '×î¸ßµã'
-                    }]
+                    {type: 'average', name: 'å¹³å‡å€¼'}
                 ]
             }
         }
+
     ]
 };
+
+
+// å¼‚æ­¥åŠ è½½æ•°æ®
+
+
+$.get("/member/money", function(data){
+    // å¡«å…¥æ•°æ®
+    myChart.setOption({
+        xAxis: {
+            //è·å–æ•°æ®
+            data: data.categories
+        },
+        series: [{
+            // æ ¹æ®åå­—å¯¹åº”åˆ°ç›¸åº”çš„ç³»åˆ—
+            name: 'æ¶ˆè´¹é‡‘é¢',
+            data: data.data
+        }]
+    });
+});
+
+
+
+
+
 myChart.setOption(option);
         var myChart1 = echarts.init(document.getElementById('main1'));
 
-        // Ö¸¶¨Í¼±íµÄÅäÖÃÏîºÍÊı¾İ
+        // æŒ‡å®šå›¾è¡¨çš„é…ç½®é¡¹å’Œæ•°æ®
 option1 = {
     color: ['#3398DB'],
     tooltip : {
         trigger: 'axis',
-        axisPointer : {            // ×ø±êÖáÖ¸Ê¾Æ÷£¬×ø±êÖá´¥·¢ÓĞĞ§
-            type : 'shadow'        // Ä¬ÈÏÎªÖ±Ïß£¬¿ÉÑ¡Îª£º'line' | 'shadow'
+        axisPointer : {            // åæ ‡è½´æŒ‡ç¤ºå™¨ï¼Œåæ ‡è½´è§¦å‘æœ‰æ•ˆ
+            type : 'shadow'        // é»˜è®¤ä¸ºç›´çº¿ï¼Œå¯é€‰ä¸ºï¼š'line' | 'shadow'
         }
     },
     grid: {
@@ -258,7 +264,7 @@ option1 = {
     xAxis : [
         {
             type : 'category',
-            data : ['»ù½ğ', 'Æ±¾İ', '¶¨ÆÚÀí²Æ', '±äÏÖ´û'],
+            data : ['åŸºé‡‘', 'ç¥¨æ®', 'å®šæœŸç†è´¢', 'å˜ç°è´·'],
             axisTick: {
                 alignWithLabel: true
             }
@@ -271,7 +277,7 @@ option1 = {
     ],
     series : [
         {
-            name:'Ö±½Ó·ÃÎÊ',
+            name:'ç›´æ¥è®¿é—®',
             type:'bar',
             barWidth: '60%',
             data:[10, 52, 200, 334, 390, 330, 220]
@@ -279,16 +285,16 @@ option1 = {
     ]
 };
 
-        // Ê¹ÓÃ¸ÕÖ¸¶¨µÄÅäÖÃÏîºÍÊı¾İÏÔÊ¾Í¼±í¡£
+        // ä½¿ç”¨åˆšæŒ‡å®šçš„é…ç½®é¡¹å’Œæ•°æ®æ˜¾ç¤ºå›¾è¡¨ã€‚
         myChart1.setOption(option1);
         
         var myChart2 = echarts.init(document.getElementById('main2'));
 
-        // Ö¸¶¨Í¼±íµÄÅäÖÃÏîºÍÊı¾İ
+        // æŒ‡å®šå›¾è¡¨çš„é…ç½®é¡¹å’Œæ•°æ®
 option2 = {
     title : {
-        text: 'Ä³Õ¾µãÓÃ»§·ÃÎÊÀ´Ô´',
-        subtext: '´¿ÊôĞé¹¹',
+        text: 'æŸç«™ç‚¹ç”¨æˆ·è®¿é—®æ¥æº',
+        subtext: 'çº¯å±è™šæ„',
         x:'center'
     },
     tooltip : {
@@ -298,20 +304,20 @@ option2 = {
     legend: {
         orient: 'vertical',
         left: 'left',
-        data: ['Ö±½Ó·ÃÎÊ','ÓÊ¼şÓªÏú','ÁªÃË¹ã¸æ','ÊÓÆµ¹ã¸æ','ËÑË÷ÒıÇæ']
+        data: ['ç›´æ¥è®¿é—®','é‚®ä»¶è¥é”€','è”ç›Ÿå¹¿å‘Š','è§†é¢‘å¹¿å‘Š','æœç´¢å¼•æ“']
     },
     series : [
         {
-            name: '·ÃÎÊÀ´Ô´',
+            name: 'è®¿é—®æ¥æº',
             type: 'pie',
             radius : '55%',
             center: ['50%', '60%'],
             data:[
-                {value:335, name:'Ö±½Ó·ÃÎÊ'},
-                {value:310, name:'ÓÊ¼şÓªÏú'},
-                {value:234, name:'ÁªÃË¹ã¸æ'},
-                {value:135, name:'ÊÓÆµ¹ã¸æ'},
-                {value:1548, name:'ËÑË÷ÒıÇæ'}
+                {value:335, name:'ç›´æ¥è®¿é—®'},
+                {value:310, name:'é‚®ä»¶è¥é”€'},
+                {value:234, name:'è”ç›Ÿå¹¿å‘Š'},
+                {value:135, name:'è§†é¢‘å¹¿å‘Š'},
+                {value:1548, name:'æœç´¢å¼•æ“'}
             ],
             itemStyle: {
                 emphasis: {
@@ -324,7 +330,7 @@ option2 = {
     ]
 };
 
-        // Ê¹ÓÃ¸ÕÖ¸¶¨µÄÅäÖÃÏîºÍÊı¾İÏÔÊ¾Í¼±í¡£
+        // ä½¿ç”¨åˆšæŒ‡å®šçš„é…ç½®é¡¹å’Œæ•°æ®æ˜¾ç¤ºå›¾è¡¨ã€‚
         myChart2.setOption(option2);
 	</script>
   </body>

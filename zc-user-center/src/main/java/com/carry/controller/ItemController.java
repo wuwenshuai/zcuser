@@ -1,7 +1,10 @@
 package com.carry.controller;
 
+import com.carry.mapper.AmountMappler;
 import com.carry.mapper.ItemMapper;
+import com.carry.pojo.Amount;
 import com.carry.pojo.Item;
+import com.carry.vo.EchartsVo;
 import com.github.pagehelper.PageHelper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -38,12 +41,58 @@ public class ItemController {
         return "pay-step-2.html";
     }
 
+    @RequestMapping("/member")
+    public String  member(){
+        return "member.html";
+    }
+
+    @Autowired
+    private AmountMappler amountMappler;
+    //报表信息
+    @RequestMapping("/member/money")
+    @ResponseBody
+    public EchartsVo echartsVo(){
+        //实体类
+        EchartsVo echartsVo = new EchartsVo();
+        //集合
+        List<Integer> data = new ArrayList<>();
+        List<String> categories = new ArrayList<>();
+        //从数据库获取所有的日期按日期排序
+        Example example = new Example(Amount.class);
+        Example.Criteria criteria = example.createCriteria();
+        example.setOrderByClause("createtime ASC");
+        List<Amount> amounts =  amountMappler.selectByExample(example);
+        amounts.forEach((amount)->{
+            categories.add(amount.getCreatetime());
+        });
+        for (String name : categories) {
+            //根据日期来获取对应的金额
+            Amount amount = new Amount();
+            amount.setCreatetime(name);
+            Amount amount1 = amountMappler.selectOne(amount);
+            //放入集合中
+            data.add(amount1.getAmount());
+        }
+        //放到实体类中
+        echartsVo.setCategories(categories);
+        echartsVo.setData(data);
+        return  echartsVo;
+    }
+
+
+    @RequestMapping("/minecrowdfunding")
+    public String  minecrowdfunding(){
+        return "minecrowdfunding.html";
+    }
+
     @RequestMapping("/projects")
     public String  projects(String title,Model model,Integer pageNum,Integer pageSize){
         if (pageNum == null){
             pageNum = 1;
+        } if (pageSize == null){
+            pageSize = 4;
         }
-        pageSize = 4;
+       // pageSize = 4;
         PageHelper.startPage(pageNum,pageSize);
         //设置查询条件，根据title进行模糊查询
         Example example = new Example(Item.class);
