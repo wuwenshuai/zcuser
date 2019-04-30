@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="utf-8">
+<html lang="utf-8" xmlns:th="http://www.thymeleaf.org">
   <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -77,7 +77,7 @@
 			<nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
 			  <div class="container">
 				<div class="navbar-header">
-				  <a class="navbar-brand" href="index.html" style="font-size:32px;">尚筹网-创意产品众筹平台</a>
+				  <a class="navbar-brand" href="index.html" style="font-size:32px;">众筹网-创意产品众筹平台</a>
 				</div>
             <div id="navbar" class="navbar-collapse collapse" style="float:right;">
               <ul class="nav navbar-nav">
@@ -183,18 +183,23 @@
                                       </thead>
                                       <tbody>
                                         <tr>
-                                          <td>活性富氢净水直饮机</td>
-                                          <td>深圳市博实永道电子商务有限公司</td>
-                                          <td>每满1750人抽取一台活性富氢净水直饮机，至少抽取一台。抽取名额（小数点后一位四舍五入）=参与人数÷1750人，由苏宁官方抽取。</td>
-                                          <td><input type="text" class="form-control" style="width:60px;" value="1"></td>
-                                          <td style="color:#F60">￥ 1.00</td>
+                                          <td th:text="${project.name}">活性富氢净水直饮机</td>
+                                          <td th:text="${project.user}">深圳市博实永道电子商务有限公司</td>
+                                          <td th:text="${project.detail}">每满1750人抽取一台活性富氢净水直饮机，至少抽取一台。抽取名额（小数点后一位四舍五入）=参与人数÷1750人，由苏宁官方抽取。</td>
+                                          <td><input type="text" class="form-control" style="width:60px;" value="1" id="num"></td>
+                                          <td style="color:#F60" th:text="'￥'+${money}"></td>
                                           <td>免运费</td>
                                         </tr>
+
                                       </tbody>
                                     </table>
+                                    <input type="hidden" th:value="${money}" id="hiddenMoney">
+
                                     <div style="float:right;">
-                                    <p>总价(含运费)：<span style="font-size:16px;color:#F60;">￥1.00</span></p>
-                                    <button type="button" class="btn btn-warning btn-lg" style="float:right;" onclick="window.location.href='/pay-step-2'"><i class="glyphicon glyphicon-credit-card"></i> 去结算</button>
+                                    <p>总价(含运费)：<span id="sumMoney" style="font-size:16px;color:#F60;" th:text="'￥'+${money}">￥1.00</span></p>
+                                        <input type="hidden" th:value="${money}" id="summoney">
+                                        <input type="hidden" th:value="${itemId1}" id="itemId1">
+                                    <button type="button" class="btn btn-warning btn-lg" style="float:right;" onclick="window.location.href='/pay-step-2?num='+$('#num').val()+'&money='+$('#summoney').val()+'&itemId='+$('#itemId1').val()"><i class="glyphicon glyphicon-credit-card"></i> 去结算</button>
                                     </div>
                                 </div>
                                 
@@ -231,7 +236,7 @@
                 <div class="col-md-12 column">
                     <div id="footer">
                         <div class="footerNav">
-                             <a rel="nofollow" href="http://www.atguigu.com">关于我们</a> | <a rel="nofollow" href="http://www.atguigu.com">服务条款</a> | <a rel="nofollow" href="http://www.atguigu.com">免责声明</a> | <a rel="nofollow" href="http://www.atguigu.com">网站地图</a> | <a rel="nofollow" href="http://www.atguigu.com">联系我们</a>
+                             <a rel="nofollow" href="https://www.baidu.com/">关于我们</a> | <a rel="nofollow" href="https://www.baidu.com/">服务条款</a> | <a rel="nofollow" href="https://www.baidu.com/">免责声明</a> | <a rel="nofollow" href="https://www.baidu.com/">网站地图</a> | <a rel="nofollow" href="https://www.baidu.com/">联系我们</a>
                         </div>
                         <div class="copyRight">
                             Copyright ?2018-2019 Carry版权所有
@@ -251,7 +256,13 @@
 $('#myTab a').click(function (e) {
   e.preventDefault()
   $(this).tab('show')
-})
+});
+$("#num").bind("input propertychange",function(event){
+
+    var sum = $("#num").val()*$("#hiddenMoney").val();
+    console.log(sum);
+    $("#sumMoney").text("￥"+sum);
+});
 	</script>
   </body>
 </html>

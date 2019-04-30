@@ -60,7 +60,7 @@
 			<nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
 			  <div class="container">
 				<div class="navbar-header">
-				  <a class="navbar-brand" href="#" style="font-size:32px;">尚筹网-创意产品众筹平台</a>
+				  <a class="navbar-brand" href="#" style="font-size:32px;">众筹网-创意产品众筹平台</a>
 				</div>
             <div id="navbar" class="navbar-collapse collapse" style="float:right;">
               <ul class="nav navbar-nav">
@@ -89,16 +89,16 @@
                         <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                             <ul class="nav navbar-nav">
                                 <li>
-                                    <a rel="nofollow" href="index.html"><i class="glyphicon glyphicon-home"></i> 众筹首页</a>
+                                    <a rel="nofollow" href="/index"><i class="glyphicon glyphicon-home"></i> 众筹首页</a>
                                 </li>
                                 <li >
-                                    <a rel="nofollow" href="projects.html"><i class="glyphicon glyphicon-th-large"></i> 众筹项目</a>
+                                    <a rel="nofollow" href="/projects"><i class="glyphicon glyphicon-th-large"></i> 众筹项目</a>
                                 </li>
                                 <li>
-                                    <a rel="nofollow" href="start.html"><i class="glyphicon glyphicon-edit"></i> 发起众筹</a>
+                                    <a rel="nofollow" href="/start"><i class="glyphicon glyphicon-edit"></i> 发起众筹</a>
                                 </li>
                                 <li>
-                                    <a rel="nofollow" href="minecrowdfunding.html"><i class="glyphicon glyphicon-user"></i> 我的众筹</a>
+                                    <a rel="nofollow" href="/minecrowdfunding"><i class="glyphicon glyphicon-user"></i> 我的众筹</a>
                                 </li>
                             </ul>
                         </div>
@@ -150,7 +150,8 @@
                                     <p>剩余 15 天</p>
                                     <div>
                                         <p><span th:text="'已有'+${item.number}+'人支持该项目'"></span></p>
-                                     <button type="button" class="btn  btn-warning btn-lg btn-block" data-toggle="modal" data-target="#myModal">立即支持</button>
+                                        <input type="hidden" id="hiddenItemId" th:value="${item.id}">
+                                     <button type="button" class="btn  btn-warning btn-lg btn-block" data-toggle="modal" data-target="#myModal" id="support">立即支持</button>
                                     </div>
                                 </div>
                                 <div class="panel-footer" style="    background-color: #fff;
@@ -189,7 +190,7 @@
 						<div class="panel-body">
                             <p>配送费用：包邮</p>
                             <p>预计发放时间：项目筹款成功后的50天内</p>
-                            <button type="button" class="btn  btn-warning btn-lg" onclick="window.location.href='/pay-step-1'">支持</button>
+                            <button type="button" class="btn  btn-warning btn-lg" onclick="window.location.href='/pay-step-1?money='+1">支持</button>
                             <br><br>
                             <p>感谢您的支持，在众筹开始后，您将以79元的优惠价格获得“遇见彩虹?”智能插座一件（参考价208元）。</p>
 						</div>
@@ -204,7 +205,7 @@
 						<div class="panel-body">
                             <p>配送费用：包邮</p>
                             <p>预计发放时间：项目筹款成功后的50天内</p>
-                            <button type="button" class="btn  btn-warning btn-lg" onclick="window.location.href='/pay-step-1'">支持</button>
+                            <button type="button" class="btn  btn-warning btn-lg" onclick="window.location.href='/pay-step-1?money='+149">支持</button>
                             <br><br>
                             <p>感谢您的支持，在众筹开始后，您将以79元的优惠价格获得“遇见彩虹?”智能插座一件（参考价208元）。</p>
 						</div>
@@ -249,7 +250,7 @@
                 <div class="col-md-12 column">
                     <div id="footer">
                         <div class="footerNav">
-                             <a rel="nofollow" href="http://www.atguigu.com">关于我们</a> | <a rel="nofollow" href="http://www.atguigu.com">服务条款</a> | <a rel="nofollow" href="http://www.atguigu.com">免责声明</a> | <a rel="nofollow" href="http://www.atguigu.com">网站地图</a> | <a rel="nofollow" href="http://www.atguigu.com">联系我们</a>
+                             <a rel="nofollow" href="https://www.baidu.com/">关于我们</a> | <a rel="nofollow" href="https://www.baidu.com/">服务条款</a> | <a rel="nofollow" href="https://www.baidu.com/">免责声明</a> | <a rel="nofollow" href="https://www.baidu.com/">网站地图</a> | <a rel="nofollow" href="https://www.baidu.com/">联系我们</a>
                         </div>
                         <div class="copyRight">
                             Copyright ?2010-2014atguigu.com 版权所有
@@ -283,40 +284,42 @@
             </ul>
 		</div>
 		<div id="navList" class="col-sm-9 col-md-9 column" style="height:400px;overflow-y:auto;">
+            <input type="hidden" id="itemId" th:value="${item.id}">
             <h2 id="section-1" style="border-bottom:1px dashed #ddd;" ><span style="font-size:20px;font-weight:bold;">￥1.00</span><span style="font-size:12px;margin-left:60px;">无限额，223位支持者</span></h2>
             <p>配送费用：全国包邮</p>
             <p>预计发放时间：项目筹款成功后的30天内</p>
-            <button type="button" class="btn  btn-warning btn-lg " onclick="window.location.href='/pay-step-1'">支持</button>
+            <button type="button" class="btn  btn-warning btn-lg " onclick="window.location.href='/pay-step-1?money='+1+'&itemId='+$('#itemId').val()">支持</button>
             <br><br>
-            <p>每满1750人抽取一台活性富氢净水直饮机，至少抽取一台。抽取名额（小数点后一位四舍五入）=参与人数÷1750人，由苏宁官方抽取。</p>
+            <p>每满1750人抽取一台活性富氢净水直饮机，至少抽取一台。抽取名额（小数点后一位四舍五入）=参与人数÷1750人，由众筹官方抽取。</p>
             <hr>
             <h2 id="section-2" style="border-bottom:1px dashed #ddd;" ><span style="font-size:20px;font-weight:bold;">￥149.00</span><span style="font-size:12px;margin-left:60px;">无限额，223位支持者</span></h2>
             <p>配送费用：全国包邮</p>
             <p>预计发放时间：项目筹款成功后的30天内</p>
-            <button type="button" class="btn  btn-warning btn-lg " onclick="window.location.href='/pay-step-1'">支持</button>
+            <button type="button" class="btn  btn-warning btn-lg " onclick="window.location.href='/pay-step-1?money='+149+'&itemId='+$('#itemId').val()">支持</button>
             <br><br>
-            <p>每满1750人抽取一台活性富氢净水直饮机，至少抽取一台。抽取名额（小数点后一位四舍五入）=参与人数÷1750人，由苏宁官方抽取。</p>
+            <p>每满1750人抽取一台活性富氢净水直饮机，至少抽取一台。抽取名额（小数点后一位四舍五入）=参与人数÷1750人，由众筹官方抽取。</p>
             <hr>
             <h2 id="section-3" style="border-bottom:1px dashed #ddd;" ><span style="font-size:20px;font-weight:bold;">￥249.00</span><span style="font-size:12px;margin-left:60px;">无限额，223位支持者</span></h2>
             <p>配送费用：全国包邮</p>
             <p>预计发放时间：项目筹款成功后的30天内</p>
-            <button type="button" class="btn  btn-warning btn-lg " onclick="window.location.href='/pay-step-1'">支持</button>
+            <button type="button" class="btn  btn-warning btn-lg " onclick="window.location.href='/pay-step-1?money='+249+'&itemId='+$('#itemId').val()">支持</button>
             <br><br>
-            <p>每满1750人抽取一台活性富氢净水直饮机，至少抽取一台。抽取名额（小数点后一位四舍五入）=参与人数÷1750人，由苏宁官方抽取。</p>
+            <p>每满1750人抽取一台活性富氢净水直饮机，至少抽取一台。抽取名额（小数点后一位四舍五入）=参与人数÷1750人，由众筹官方抽取。</p>
             <hr>
             <h2 id="section-4" style="border-bottom:1px dashed #ddd;" ><span style="font-size:20px;font-weight:bold;">￥549.00</span><span style="font-size:12px;margin-left:60px;">无限额，223位支持者</span></h2>
             <p>配送费用：全国包邮</p>
             <p>预计发放时间：项目筹款成功后的30天内</p>
-            <button type="button" class="btn  btn-warning btn-lg " onclick="window.location.href='/pay-step-1'">支持</button>
+
+            <button type="button" class="btn  btn-warning btn-lg " onclick="window.location.href='/pay-step-1?money='+549+'&itemId='+$('#itemId').val()">支持</button>
             <br><br>
-            <p>每满1750人抽取一台活性富氢净水直饮机，至少抽取一台。抽取名额（小数点后一位四舍五入）=参与人数÷1750人，由苏宁官方抽取。</p>
+            <p>每满1750人抽取一台活性富氢净水直饮机，至少抽取一台。抽取名额（小数点后一位四舍五入）=参与人数÷1750人，由众筹官方抽取。</p>
             <hr>
             <h2 id="section-5" style="border-bottom:1px dashed #ddd;" ><span style="font-size:20px;font-weight:bold;">￥1999.00</span><span style="font-size:12px;margin-left:60px;">无限额，223位支持者</span></h2>
             <p>配送费用：全国包邮</p>
             <p>预计发放时间：项目筹款成功后的30天内</p>
-            <button type="button" class="btn  btn-warning btn-lg " onclick="window.location.href='/pay-step-1'">支持</button>
+            <button type="button" class="btn  btn-warning btn-lg " onclick="window.location.href='/pay-step-1?money='+1999+'&itemId='+$('#itemId').val()">支持</button>
             <br><br>
-            <p>每满1750人抽取一台活性富氢净水直饮机，至少抽取一台。抽取名额（小数点后一位四舍五入）=参与人数÷1750人，由苏宁官方抽取。</p>
+            <p>每满1750人抽取一台活性富氢净水直饮机，至少抽取一台。抽取名额（小数点后一位四舍五入）=参与人数÷1750人，由众筹官方抽取。</p>
             </div>
         </div>
 	</div>
@@ -333,8 +336,9 @@
 	<script>
     $(".prjtip img").css("cursor", "pointer");
     $(".prjtip img").click(function(){
-        window.location.href = 'project.html';
+        window.location.href = '/project?id=1';
     });
+
 	</script>
   </body>
 </html>

@@ -2,8 +2,10 @@ package com.carry.controller;
 
 import com.carry.mapper.AmountMappler;
 import com.carry.mapper.ItemMapper;
+import com.carry.mapper.ProjectMapper;
 import com.carry.pojo.Amount;
 import com.carry.pojo.Item;
+import com.carry.pojo.Project;
 import com.carry.vo.EchartsVo;
 import com.github.pagehelper.PageHelper;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -22,6 +24,9 @@ public class ItemController {
     @Autowired
     private ItemMapper itemMapper;
 
+    @Autowired
+    private ProjectMapper projectMapper;
+
 
     @RequestMapping("/project")
     public String project(Model model,Integer id){
@@ -32,12 +37,31 @@ public class ItemController {
     }
 
     @RequestMapping("/pay-step-1")
-    public String  pay(){
+    public String  pay(Integer money,Model model,Integer itemId){
+        System.out.println("111:"+itemId);
+        model.addAttribute("money",money);
+        model.addAttribute("itemId1",itemId);
+        //根据商品id查询商品信息
+        Project pj = new Project();
+        pj.setItemid(itemId);
+        Project project = projectMapper.selectOne(pj);
+        model.addAttribute("project",project);
         return "pay-step-1.html";
     }
 
     @RequestMapping("/pay-step-2")
-    public String  pay2(){
+    public String  pay2(Integer num,Integer money,Model model,Integer itemId){
+
+        System.out.println("---"+itemId);
+
+        //根据商品id查询商品信息
+        Project pj = new Project();
+        pj.setItemid(itemId);
+        Project project2 = projectMapper.selectOne(pj);
+        model.addAttribute("project2",project2);
+        model.addAttribute("itemId2",itemId);
+        model.addAttribute("num2",num);
+        model.addAttribute("money2",money);
         return "pay-step-2.html";
     }
 
@@ -119,6 +143,13 @@ public class ItemController {
         return "projects.html";
     }
 
+
+    //跳转到支持金额面
+    /*@RequestMapping("/project/support")
+    public void support(Integer id,Model model){
+        Item item = itemMapper.selectByPrimaryKey(id);
+        model.addAttribute("item1",item);
+    }*/
 
 
 
